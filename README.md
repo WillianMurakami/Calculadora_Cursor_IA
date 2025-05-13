@@ -1,18 +1,21 @@
-# 🧮 Calculadora Python com Streamlit
+# 🧮 Calculadora Python com Cursor IA
 
-Uma calculadora web moderna e intuitiva desenvolvida com Python e Streamlit.
+Este projeto é uma demonstração prática do poder da IDE Cursor IA no desenvolvimento de software. Transformamos uma simples calculadora de linha de comando em uma aplicação web moderna e interativa usando Streamlit.
 
-## 📋 Pré-requisitos
+## 🌟 Características
 
-- Python 3.8 ou superior
-- pip (gerenciador de pacotes Python)
+- Interface web moderna e responsiva
+- Operações matemáticas básicas e avançadas
+- Navegação intuitiva com barra lateral
+- Documentação detalhada do processo de desenvolvimento
+- Exemplos de prompts utilizados com Cursor IA
 
-## 🚀 Instalação
+## 🚀 Como Executar
 
-1. Clone este repositório:
+1. Clone o repositório:
 ```bash
-git clone https://seu-repositorio/calculadora-python.git
-cd calculadora-python
+git clone https://github.com/seu-usuario/Calculadora_Cursor_IA.git
+cd Calculadora_Cursor_IA
 ```
 
 2. Instale as dependências:
@@ -20,43 +23,43 @@ cd calculadora-python
 pip install -r requirements.txt
 ```
 
-## 💻 Como Usar
-
-1. Execute o aplicativo:
+3. Execute a aplicação:
 ```bash
-streamlit run calculadora_app.py
+streamlit run app.py
 ```
 
-2. Abra seu navegador em `http://localhost:8501`
+## 📚 Estrutura do Projeto
 
-## 🎯 Funcionalidades
+```
+📁 Calculadora_Cursor_IA/
+├── 📄 app.py            # Aplicação principal
+├── 📄 requirements.txt  # Dependências do projeto
+├── 📄 README.md        # Documentação
+└── 📄 .gitignore       # Arquivos ignorados pelo Git
+```
 
-- Operações básicas (soma, subtração, multiplicação, divisão)
-- Potenciação
-- Raiz quadrada
-- Interface intuitiva
-- Documentação detalhada
+## 🤖 Desenvolvimento com Cursor IA
 
-## 🤖 Desenvolvimento
+Este projeto foi desenvolvido utilizando a IDE Cursor IA, demonstrando como uma ferramenta de IA pode potencializar o desenvolvimento de software. O processo incluiu:
 
-Este projeto foi desenvolvido usando o Cursor IDE com assistência de IA, demonstrando
-a integração de tecnologias modernas no desenvolvimento de software.
+1. Criação da base do projeto com prompts específicos
+2. Transformação da aplicação de linha de comando para web
+3. Melhorias visuais e de usabilidade
+4. Documentação detalhada do processo
 
-## 📚 Documentação
+## 🌐 Deploy
 
-A documentação completa está disponível na aba "Documentação" da aplicação.
+A aplicação está disponível online através do Streamlit Cloud. Você pode acessá-la [aqui](link-para-sua-aplicacao).
 
-## 🔄 Atualizações Futuras
+## 👨‍💻 Autor
 
-- [ ] Histórico de cálculos
-- [ ] Temas personalizáveis
-- [ ] Versão mobile
-- [ ] Operações trigonométricas
+**Willian Murakami**
+- LinkedIn: [Willian Murakami](https://www.linkedin.com/in/willian-murakami/)
 
-## 👥 Contribuição
+## 📄 Licença
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## 📝 Licença
+---
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes. 
+Desenvolvido com ❤️ usando Cursor IA 
