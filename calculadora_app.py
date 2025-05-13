@@ -78,10 +78,11 @@ def calculadora():
     # Sidebar com navegação e créditos
     with st.sidebar:
         st.title("Navegação")
-        page = st.page_link(
+        page = st.selectbox(
             "Ir para:",
             ["🧮 Calculadora", "📖 Sobre o Projeto"],
-            format_func=lambda x: x
+            format_func=lambda x: x,
+            label_visibility="collapsed"
         )
         
         # Link do desenvolvedor
