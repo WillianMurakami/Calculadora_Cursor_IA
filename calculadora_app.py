@@ -5,9 +5,9 @@ from PIL import Image
 
 # Configuração da página
 st.set_page_config(
-    page_title="Calculadora Python",
+    page_title="Calculadora Python v1.0",
     page_icon="🧮",
-    layout="wide",
+    layout="centered",  # Mudado para centered conforme solicitado
     initial_sidebar_state="expanded"
 )
 
@@ -41,6 +41,17 @@ def local_css():
             background-color: #f8f9fa;
             margin-bottom: 1rem;
         }
+        .sidebar-text {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .main-title {
+            text-align: center;
+            color: #1E88E5;
+            margin-bottom: 30px;
+        }
         </style>
     """, unsafe_allow_html=True)
 
@@ -54,25 +65,28 @@ def raiz_quadrada(a): return math.sqrt(a) if a >= 0 else "Erro: Raiz de número 
 
 # Função principal da calculadora
 def calculadora():
-    st.title("🧮 Calculadora Python")
-    
-    # Tabs para navegação
-    tab1, tab2 = st.tabs(["Calculadora", "Documentação"])
-    
-    with tab1:
-        st.markdown("### Realize seus cálculos de forma simples e rápida!")
+    # Sidebar com navegação e créditos
+    with st.sidebar:
+        st.title("Navegação")
+        page = st.radio(
+            "Ir para:",
+            ["Calculadora", "Sobre o Projeto", "Documentação"]
+        )
+        
+        # Link do desenvolvedor
+        st.markdown(
+            '<div class="sidebar-text">Projeto desenvolvido por '
+            '<a href="https://www.linkedin.com/in/willian-murakami/" target="_blank">Willian Murakami</a></div>',
+            unsafe_allow_html=True
+        )
+
+    if page == "Calculadora":
+        st.markdown('<h1 class="main-title">🧮 Calculadora Python v1.0</h1>', unsafe_allow_html=True)
         
         # Seleção da operação
         operacao = st.selectbox(
-            "Escolha a operação desejada:",
-            [
-                "Soma (+)",
-                "Subtração (-)",
-                "Multiplicação (×)",
-                "Divisão (÷)",
-                "Potenciação (^)",
-                "Raiz Quadrada (√)"
-            ]
+            "Escolha a operação:",
+            ["Soma (+)", "Subtração (-)", "Multiplicação (×)", "Divisão (÷)", "Potenciação (^)", "Raiz Quadrada (√)"]
         )
         
         # Input dos números
@@ -96,91 +110,104 @@ def calculadora():
                 if operacao == "Soma (+)":
                     resultado = soma(num1, num2)
                     st.markdown(f"### {num1} + {num2} = {resultado}")
-                    
                 elif operacao == "Subtração (-)":
                     resultado = subtracao(num1, num2)
                     st.markdown(f"### {num1} - {num2} = {resultado}")
-                    
                 elif operacao == "Multiplicação (×)":
                     resultado = multiplicacao(num1, num2)
                     st.markdown(f"### {num1} × {num2} = {resultado}")
-                    
                 elif operacao == "Divisão (÷)":
                     resultado = divisao(num1, num2)
                     st.markdown(f"### {num1} ÷ {num2} = {resultado}")
-                    
                 elif operacao == "Potenciação (^)":
                     resultado = potencia(num1, num2)
                     st.markdown(f"### {num1} ^ {num2} = {resultado}")
-                    
                 else:  # Raiz Quadrada
                     resultado = raiz_quadrada(num1)
                     st.markdown(f"### √{num1} = {resultado}")
                 
                 st.markdown('</div>', unsafe_allow_html=True)
     
-    with tab2:
-        st.markdown("## Sobre o Projeto")
+    elif page == "Sobre o Projeto":
+        st.markdown('<h1 class="main-title">📖 Sobre o Projeto</h1>', unsafe_allow_html=True)
         
-        st.markdown("""
-        ### 📝 Descrição
+        st.write("""
+        ### A Jornada de Aprendizado com Cursor IA
         
-        Esta calculadora foi desenvolvida como parte do curso de Python, utilizando tecnologias modernas
-        e práticas de desenvolvimento profissionais. O projeto demonstra a aplicação prática de conceitos
-        de programação e a criação de interfaces web interativas.
+        Este projeto nasceu como uma "brincadeira" durante meu processo de aprendizado da Cursor IA, 
+        uma nova e poderosa IDE que integra inteligência artificial ao desenvolvimento de software. 
+        A ideia era pegar um dos exercícios mais básicos e tradicionais no aprendizado de programação 
+        - a calculadora - e ver até onde poderíamos ir com o auxílio desta ferramenta incrível.
         
-        ### 🛠️ Tecnologias Utilizadas
+        #### 🎯 A Experiência
+        O que começou como uma simples calculadora de linha de comando se transformou em uma aplicação 
+        web moderna e profissional, demonstrando o poder da integração entre criatividade humana e 
+        inteligência artificial.
         
-        - **Python**: Linguagem de programação principal
-        - **Streamlit**: Framework para criação de aplicações web
-        - **Cursor IDE**: Ambiente de desenvolvimento integrado com IA
-        - **Git**: Sistema de controle de versão
+        #### 🛠️ Evolução do Projeto
+        1. **Versão Inicial**: Uma calculadora básica em linha de comando
+        2. **Exploração do Cursor IA**: Descoberta das capacidades da ferramenta
+        3. **Transformação**: Evolução para uma aplicação web com Streamlit
+        4. **Refinamento**: Adição de interface moderna e documentação detalhada
+        5. **Deploy**: Disponibilização na nuvem através do Streamlit Cloud
         
-        ### 💡 Funcionalidades
+        #### 💡 Aprendizados
+        - Como potencializar o desenvolvimento usando IA
+        - Transformação de conceitos básicos em produtos profissionais
+        - Integração de diferentes tecnologias modernas
+        - Processo completo de desenvolvimento e deploy
+        """)
         
-        - Operações matemáticas básicas
-        - Interface intuitiva e responsiva
-        - Tratamento de erros
-        - Documentação integrada
+    elif page == "Documentação":
+        st.markdown('<h1 class="main-title">📚 Documentação</h1>', unsafe_allow_html=True)
         
-        ### 🤖 Desenvolvimento com IA
+        st.write("""
+        ### O Processo com Cursor IA
         
-        O projeto foi desenvolvido com o auxílio do Cursor IDE, que utiliza inteligência artificial para:
+        Aqui está um registro detalhado de como o projeto evoluiu usando a Cursor IA:
         
-        1. **Sugestões de código**: Autocompletar e sugerir melhores práticas
-        2. **Debugging**: Identificação e correção de erros
-        3. **Documentação**: Geração de comentários e documentação
-        4. **Refatoração**: Sugestões de melhorias no código
-        
-        ### 📊 Estrutura do Projeto
-        
+        #### 1️⃣ Primeiro Prompt
         ```
-        calculadora/
+        "Crie uma calculadora em Python com operações básicas e interface de linha de comando"
+        ```
+        Resultado: Obtive um código base funcional com operações matemáticas básicas.
+        
+        #### 2️⃣ Evolução para Web
+        ```
+        "Transforme esta calculadora em uma aplicação web moderna usando Streamlit, 
+        mantendo todas as funcionalidades existentes"
+        ```
+        Resultado: A calculadora ganhou uma interface web básica com Streamlit.
+        
+        #### 3️⃣ Melhorias Visuais
+        ```
+        "Adicione uma barra lateral para navegação, melhore o layout visual e 
+        inclua minha marca pessoal no projeto"
+        ```
+        Resultado: Interface moderna com navegação, documentação e branding pessoal.
+        
+        #### 4️⃣ Documentação e Deploy
+        ```
+        "Crie uma documentação detalhada do processo de desenvolvimento e 
+        prepare o projeto para deploy no Streamlit Cloud"
+        ```
+        Resultado: Documentação completa e projeto pronto para deploy.
+        
+        ### 🚀 Deploy no Streamlit Cloud
+        
+        1. Repositório criado no GitHub
+        2. Conta configurada no Streamlit Cloud
+        3. Conexão estabelecida com o repositório
+        4. Deploy realizado com sucesso
+        
+        ### 📁 Estrutura Final do Projeto
+        ```
+        Calculadora_Cursor_IA/
         ├── calculadora_app.py    # Aplicação principal
         ├── requirements.txt      # Dependências
-        └── README.md            # Documentação
+        ├── README.md            # Documentação
+        └── .gitignore           # Configuração Git
         ```
-        
-        ### 🎯 Objetivos Alcançados
-        
-        1. Criar uma interface amigável para usuários leigos
-        2. Implementar todas as operações matemáticas básicas
-        3. Fornecer feedback claro sobre erros
-        4. Documentar o processo de desenvolvimento
-        
-        ### 🔄 Processo de Desenvolvimento
-        
-        1. **Planejamento**: Definição de requisitos e funcionalidades
-        2. **Desenvolvimento**: Implementação com auxílio de IA
-        3. **Testes**: Verificação de funcionalidades e usabilidade
-        4. **Documentação**: Registro do processo e instruções de uso
-        
-        ### 🌟 Próximos Passos
-        
-        - Adicionar mais operações matemáticas
-        - Implementar histórico de cálculos
-        - Adicionar temas personalizáveis
-        - Criar versão mobile
         """)
 
 # Execução principal
