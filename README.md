@@ -32,10 +32,10 @@ streamlit run app.py
 
 ```
 📁 Calculadora_Cursor_IA/
-├── 📄 app.py            # Aplicação principal
-├── 📄 requirements.txt  # Dependências do projeto
-├── 📄 README.md        # Documentação
-└── 📄 .gitignore       # Arquivos ignorados pelo Git
+├── 📄 calculadora_app.py       # Aplicação principal
+├── 📄 requirements.txt        # Dependências do projeto
+├── 📄 README.md              # Documentação
+└── 📄 .gitignore              # Arquivos ignorados pelo Git
 ```
 
 ## 🤖 Desenvolvimento com Cursor IA
