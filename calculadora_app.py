@@ -20,7 +20,19 @@ def local_css():
         }
         .stButton>button {
             width: 100%;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            background-color: transparent;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+        .stButton>button:hover {
+            background-color: #f0f2f6;
+            transform: translateX(5px);
+        }
+        .stButton>button:active {
+            background-color: #e6f3ff;
+            border-right: 3px solid #1E88E5;
         }
         .operation-card {
             padding: 1.5rem;
@@ -62,6 +74,9 @@ def local_css():
             color: #1E88E5;
             font-weight: 500;
         }
+        div[data-testid="stSidebarNav"] {
+            margin-top: -1rem;
+        }
         </style>
     """, unsafe_allow_html=True)
 
@@ -79,46 +94,18 @@ def calculadora():
     with st.sidebar:
         st.title("Navegação")
         
-        # Estilo CSS para os botões de navegação
-        st.markdown("""
-            <style>
-            div[data-testid="stSidebarNav"] {
-                margin-top: -1rem;
-            }
-            .nav-link-button {
-                width: 100%;
-                padding: 0.5rem 1rem;
-                margin: 0.2rem 0;
-                border: none;
-                background-color: transparent;
-                color: #262730;
-                text-align: left;
-                cursor: pointer;
-                border-radius: 0.5rem;
-                transition: background-color 0.3s;
-                text-decoration: none;
-                display: inline-block;
-            }
-            .nav-link-button:hover {
-                background-color: #f0f2f6;
-                text-decoration: none;
-            }
-            .nav-link-button.active {
-                background-color: #e6f3ff;
-                border-right: 3px solid #1E88E5;
-            }
-            </style>
-        """, unsafe_allow_html=True)
+        # Criando uma variável de sessão para controlar a navegação se não existir
+        if 'current_page' not in st.session_state:
+            st.session_state.current_page = "Calculadora"
         
-        # Obtém a página atual da query string ou define como Calculadora por padrão
-        current_page = st.experimental_get_query_params().get("page", ["Calculadora"])[0]
-        
-        # Botões de navegação
-        if st.link_button("🧮 Calculadora", "?page=Calculadora", use_container_width=True):
-            st.experimental_set_query_params(page="Calculadora")
+        # Botões de navegação usando st.button
+        if st.button("🧮 Calculadora", key="calc_btn", use_container_width=True):
+            st.session_state.current_page = "Calculadora"
+            st.experimental_rerun()
             
-        if st.link_button("📖 Sobre o Projeto", "?page=Sobre", use_container_width=True):
-            st.experimental_set_query_params(page="Sobre")
+        if st.button("📖 Sobre o Projeto", key="sobre_btn", use_container_width=True):
+            st.session_state.current_page = "Sobre"
+            st.experimental_rerun()
         
         # Link do desenvolvedor
         st.markdown(
@@ -128,9 +115,7 @@ def calculadora():
         )
 
     # Lógica de exibição baseada na página atual
-    current_page = st.experimental_get_query_params().get("page", ["Calculadora"])[0]
-    
-    if current_page == "Calculadora":
+    if st.session_state.current_page == "Calculadora":
         st.markdown('<h1 class="main-title">🧮 Calculadora Python v1.0</h1>', unsafe_allow_html=True)
         
         # Seleção da operação
@@ -178,7 +163,7 @@ def calculadora():
                 
                 st.markdown('</div>', unsafe_allow_html=True)
     
-    elif current_page == "Sobre":
+    elif st.session_state.current_page == "Sobre":
         st.markdown('<h1 class="main-title">📖 Sobre o Projeto</h1>', unsafe_allow_html=True)
         
         st.write("""
@@ -292,4 +277,4 @@ def main():
     calculadora()
 
 if __name__ == "__main__":
-    main() 
+    main()
