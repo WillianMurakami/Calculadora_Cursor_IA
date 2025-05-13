@@ -7,7 +7,7 @@ from PIL import Image
 st.set_page_config(
     page_title="Calculadora Python v1.0",
     page_icon="🧮",
-    layout="centered",  # Mudado para centered conforme solicitado
+    layout="centered",
     initial_sidebar_state="expanded"
 )
 
@@ -52,6 +52,16 @@ def local_css():
             color: #1E88E5;
             margin-bottom: 30px;
         }
+        .step-box {
+            padding: 1rem;
+            border-left: 3px solid #1E88E5;
+            background-color: #f8f9fa;
+            margin: 1rem 0;
+        }
+        .highlight-text {
+            color: #1E88E5;
+            font-weight: 500;
+        }
         </style>
     """, unsafe_allow_html=True)
 
@@ -68,9 +78,10 @@ def calculadora():
     # Sidebar com navegação e créditos
     with st.sidebar:
         st.title("Navegação")
-        page = st.radio(
+        page = st.selectbox(
             "Ir para:",
-            ["Calculadora", "Sobre o Projeto", "Documentação"]
+            ["🧮 Calculadora", "📖 Sobre o Projeto"],
+            format_func=lambda x: x
         )
         
         # Link do desenvolvedor
@@ -80,7 +91,7 @@ def calculadora():
             unsafe_allow_html=True
         )
 
-    if page == "Calculadora":
+    if page == "🧮 Calculadora":
         st.markdown('<h1 class="main-title">🧮 Calculadora Python v1.0</h1>', unsafe_allow_html=True)
         
         # Seleção da operação
@@ -128,79 +139,99 @@ def calculadora():
                 
                 st.markdown('</div>', unsafe_allow_html=True)
     
-    elif page == "Sobre o Projeto":
+    elif page == "📖 Sobre o Projeto":
         st.markdown('<h1 class="main-title">📖 Sobre o Projeto</h1>', unsafe_allow_html=True)
         
         st.write("""
         ### A Jornada de Aprendizado com Cursor IA
         
-        Este projeto nasceu como uma "brincadeira" durante meu processo de aprendizado da Cursor IA, 
-        uma nova e poderosa IDE que integra inteligência artificial ao desenvolvimento de software. 
-        A ideia era pegar um dos exercícios mais básicos e tradicionais no aprendizado de programação 
-        - a calculadora - e ver até onde poderíamos ir com o auxílio desta ferramenta incrível.
+        Este projeto nasceu como uma "brincadeira" durante meu processo de aprendizado da 
+        [**_Cursor IA_**](https://cursor.sh), uma nova e poderosa IDE que integra inteligência 
+        artificial ao desenvolvimento de software. A ideia era pegar um dos exercícios mais básicos 
+        e tradicionais no aprendizado de programação - a calculadora - e ver até onde poderíamos 
+        ir com o auxílio desta ferramenta incrível.
         
         #### 🎯 A Experiência
+        
         O que começou como uma simples calculadora de linha de comando se transformou em uma aplicação 
         web moderna e profissional, demonstrando o poder da integração entre criatividade humana e 
-        inteligência artificial.
-        
-        #### 🛠️ Evolução do Projeto
-        1. **Versão Inicial**: Uma calculadora básica em linha de comando
-        2. **Exploração do Cursor IA**: Descoberta das capacidades da ferramenta
-        3. **Transformação**: Evolução para uma aplicação web com Streamlit
-        4. **Refinamento**: Adição de interface moderna e documentação detalhada
-        5. **Deploy**: Disponibilização na nuvem através do Streamlit Cloud
-        
-        #### 💡 Aprendizados
-        - Como potencializar o desenvolvimento usando IA
-        - Transformação de conceitos básicos em produtos profissionais
-        - Integração de diferentes tecnologias modernas
-        - Processo completo de desenvolvimento e deploy
+        inteligência artificial. Veja abaixo como foi essa evolução:
         """)
         
-    elif page == "Documentação":
-        st.markdown('<h1 class="main-title">📚 Documentação</h1>', unsafe_allow_html=True)
+        # Primeiro Prompt
+        st.markdown("""
+        <div class="step-box">
+        <h4>1️⃣ Versão Inicial</h4>
+        <p><strong>Prompt utilizado:</strong></p>
+        <code>"Crie uma calculadora em Python com operações básicas e interface de linha de comando"</code>
+        <p><em>Resultado:</em> Desenvolvimento de uma calculadora funcional em terminal, implementando 
+        operações matemáticas básicas com interface simples e intuitiva.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Segundo Prompt
+        st.markdown("""
+        <div class="step-box">
+        <h4>2️⃣ Exploração do Cursor IA</h4>
+        <p><strong>Prompt utilizado:</strong></p>
+        <code>"Transforme esta calculadora em uma aplicação web moderna usando Streamlit, 
+        mantendo todas as funcionalidades existentes"</code>
+        <p><em>Resultado:</em> A calculadora ganhou uma interface web moderna, mantendo todas as 
+        funcionalidades originais e adicionando novos recursos visuais.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Terceiro Prompt
+        st.markdown("""
+        <div class="step-box">
+        <h4>3️⃣ Refinamento Visual</h4>
+        <p><strong>Prompt utilizado:</strong></p>
+        <code>"Adicione uma barra lateral para navegação, melhore o layout visual e 
+        inclua minha marca pessoal no projeto"</code>
+        <p><em>Resultado:</em> Implementação de navegação intuitiva, melhorias significativas no 
+        design e adição de elementos de marca pessoal.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Quarto Prompt
+        st.markdown("""
+        <div class="step-box">
+        <h4>4️⃣ Documentação e Deploy</h4>
+        <p><strong>Prompt utilizado:</strong></p>
+        <code>"Crie uma documentação detalhada do processo de desenvolvimento e 
+        prepare o projeto para deploy no Streamlit Cloud"</code>
+        <p><em>Resultado:</em> Criação de documentação completa e preparação para disponibilização 
+        online através do Streamlit Cloud.</p>
+        </div>
+        """, unsafe_allow_html=True)
         
         st.write("""
-        ### O Processo com Cursor IA
+        #### 💡 Principais Aprendizados
         
-        Aqui está um registro detalhado de como o projeto evoluiu usando a Cursor IA:
+        Durante este projeto, foram adquiridos diversos conhecimentos importantes:
         
-        #### 1️⃣ Primeiro Prompt
-        ```
-        "Crie uma calculadora em Python com operações básicas e interface de linha de comando"
-        ```
-        Resultado: Obtive um código base funcional com operações matemáticas básicas.
+        - **Desenvolvimento Ágil com IA**: Aprendi como a _Cursor IA_ pode acelerar significativamente 
+          o processo de desenvolvimento, sugerindo código relevante e ajudando na resolução de problemas.
+          
+        - **Integração de Tecnologias**: Experiência prática com a combinação de diferentes tecnologias:
+          - _Python_ para a lógica de programação
+          - _Streamlit_ para a interface web
+          - _Git_ para controle de versão
+          - _Streamlit Cloud_ para deploy
+          
+        - **Melhores Práticas**: Desenvolvimento de código limpo, documentação clara e interface 
+          intuitiva para usuários técnicos e não técnicos.
+          
+        #### 🚀 Deploy e Disponibilização
         
-        #### 2️⃣ Evolução para Web
-        ```
-        "Transforme esta calculadora em uma aplicação web moderna usando Streamlit, 
-        mantendo todas as funcionalidades existentes"
-        ```
-        Resultado: A calculadora ganhou uma interface web básica com Streamlit.
-        
-        #### 3️⃣ Melhorias Visuais
-        ```
-        "Adicione uma barra lateral para navegação, melhore o layout visual e 
-        inclua minha marca pessoal no projeto"
-        ```
-        Resultado: Interface moderna com navegação, documentação e branding pessoal.
-        
-        #### 4️⃣ Documentação e Deploy
-        ```
-        "Crie uma documentação detalhada do processo de desenvolvimento e 
-        prepare o projeto para deploy no Streamlit Cloud"
-        ```
-        Resultado: Documentação completa e projeto pronto para deploy.
-        
-        ### 🚀 Deploy no Streamlit Cloud
+        O projeto está disponível online através do Streamlit Cloud, seguindo estas etapas:
         
         1. Repositório criado no GitHub
-        2. Conta configurada no Streamlit Cloud
-        3. Conexão estabelecida com o repositório
-        4. Deploy realizado com sucesso
+        2. Configuração da conta no Streamlit Cloud
+        3. Conexão com o repositório
+        4. Deploy e disponibilização online
         
-        ### 📁 Estrutura Final do Projeto
+        #### 📁 Estrutura do Projeto
         ```
         Calculadora_Cursor_IA/
         ├── calculadora_app.py    # Aplicação principal
@@ -208,6 +239,12 @@ def calculadora():
         ├── README.md            # Documentação
         └── .gitignore           # Configuração Git
         ```
+        
+        ---
+        
+        > **Nota**: Este projeto é um exemplo prático de como ferramentas modernas de IA, como a 
+        > _Cursor IA_, podem transformar exercícios básicos de programação em aplicações profissionais 
+        > e funcionais.
         """)
 
 # Execução principal
