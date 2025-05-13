@@ -49,7 +49,7 @@ Este projeto foi desenvolvido utilizando a IDE Cursor IA, demonstrando como uma 
 
 ## 🌐 Deploy
 
-A aplicação está disponível online através do Streamlit Cloud. Você pode acessá-la [aqui](link-para-sua-aplicacao).
+A aplicação está disponível online através do Streamlit Cloud. Você pode acessá-la [aqui]([link-para-sua-aplicacao](https://calculadoracursoria-iwnqjjarqewhxffhymzmhr.streamlit.app/~/+/?page=Sobre)).
 
 ## 👨‍💻 Autor
 
