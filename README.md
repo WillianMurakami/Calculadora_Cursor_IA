@@ -59,7 +59,3 @@ A aplicação está disponível online através do Streamlit Cloud. Você pode a
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-Desenvolvido com ❤️ usando Cursor IA 
