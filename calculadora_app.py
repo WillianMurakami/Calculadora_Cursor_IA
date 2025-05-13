@@ -78,12 +78,47 @@ def calculadora():
     # Sidebar com navegação e créditos
     with st.sidebar:
         st.title("Navegação")
-        page = st.selectbox(
-            "Ir para:",
-            ["🧮 Calculadora", "📖 Sobre o Projeto"],
-            format_func=lambda x: x,
-            label_visibility="collapsed"
-        )
+        
+        # Estilo CSS para os botões de navegação
+        st.markdown("""
+            <style>
+            div[data-testid="stSidebarNav"] {
+                margin-top: -1rem;
+            }
+            .nav-link-button {
+                width: 100%;
+                padding: 0.5rem 1rem;
+                margin: 0.2rem 0;
+                border: none;
+                background-color: transparent;
+                color: #262730;
+                text-align: left;
+                cursor: pointer;
+                border-radius: 0.5rem;
+                transition: background-color 0.3s;
+                text-decoration: none;
+                display: inline-block;
+            }
+            .nav-link-button:hover {
+                background-color: #f0f2f6;
+                text-decoration: none;
+            }
+            .nav-link-button.active {
+                background-color: #e6f3ff;
+                border-right: 3px solid #1E88E5;
+            }
+            </style>
+        """, unsafe_allow_html=True)
+        
+        # Obtém a página atual da query string ou define como Calculadora por padrão
+        current_page = st.experimental_get_query_params().get("page", ["Calculadora"])[0]
+        
+        # Botões de navegação
+        if st.link_button("🧮 Calculadora", "?page=Calculadora", use_container_width=True):
+            st.experimental_set_query_params(page="Calculadora")
+            
+        if st.link_button("📖 Sobre o Projeto", "?page=Sobre", use_container_width=True):
+            st.experimental_set_query_params(page="Sobre")
         
         # Link do desenvolvedor
         st.markdown(
@@ -92,7 +127,10 @@ def calculadora():
             unsafe_allow_html=True
         )
 
-    if page == "🧮 Calculadora":
+    # Lógica de exibição baseada na página atual
+    current_page = st.experimental_get_query_params().get("page", ["Calculadora"])[0]
+    
+    if current_page == "Calculadora":
         st.markdown('<h1 class="main-title">🧮 Calculadora Python v1.0</h1>', unsafe_allow_html=True)
         
         # Seleção da operação
@@ -140,7 +178,7 @@ def calculadora():
                 
                 st.markdown('</div>', unsafe_allow_html=True)
     
-    elif page == "📖 Sobre o Projeto":
+    elif current_page == "Sobre":
         st.markdown('<h1 class="main-title">📖 Sobre o Projeto</h1>', unsafe_allow_html=True)
         
         st.write("""
