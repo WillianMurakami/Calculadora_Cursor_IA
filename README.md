@@ -55,7 +55,3 @@ A aplicação está disponível online através do Streamlit Cloud. Você pode a
 
 **Willian Murakami**
 - LinkedIn: [Willian Murakami](https://www.linkedin.com/in/willian-murakami/)
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
